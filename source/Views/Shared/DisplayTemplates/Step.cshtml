@@ -1,0 +1,12 @@
+﻿@model Step
+
+@Html.HiddenFor(m => m.Element)
+@Html.HiddenFor(m => m.Intro)
+@Html.HiddenFor(m => m.Position)
+
+<div class="panel panel-primary">
+    <div class="panel-heading">@Html.DisplayTextFor(m => m.Element) (@Html.DisplayTextFor(m => m.Position))</div>
+    <div class="panel-body">
+        @Html.DisplayTextFor(m => m.Intro)
+    </div>
+</div>

@@ -1,0 +1,75 @@
+﻿@model Tour
+
+<div class="bs-docs-section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h1 id="forms">Tours</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="well bs-component">
+                @using (Html.BeginForm("Index", "Home", null, FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    <fieldset>
+                        @Html.HiddenFor(m => m.Id, new { @Value = Model.Id })
+
+                        @if (string.IsNullOrEmpty(Model.Id))
+                        {
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    @Html.TextBoxFor(m => m.Title, new { placeholder="New tour title here...", @class="form-control"})
+                                    @Html.ValidationMessageFor(m => m.Title)
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            @Html.HiddenFor(m => m.Title)
+                            <legend>@Model.Title</legend>
+                            
+                        }
+                        
+                        <div class="form-group">
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(m => m.Screen, new { placeholder="Screen identification...", @class="form-control"})
+                                @Html.ValidationMessageFor(m => m.Screen)
+                            </div>
+                        </div>
+    
+                        <h3>Steps</h3>
+                        @Html.DisplayFor(m => m.Steps)
+                        
+                        <h3>Add step</h3>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Element</label>
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(m => m.AddedStep.Element, new { @class="form-control"})
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Intro</label>
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(m => m.AddedStep.Intro, new { @class="form-control"})
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Position</label>
+                            <div class="col-lg-10">
+                                @Html.DropDownListFor(m => m.AddedStep.Position, new List<SelectListItem>(){new SelectListItem(){Text = "Left", Value = "left"}, new SelectListItem(){Text="Right", Value = "right"}, new SelectListItem(){Text = "Bottom", Value = "bottom"}}, new { @class="form-control"})
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</div>
