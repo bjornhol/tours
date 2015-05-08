@@ -11,7 +11,9 @@ Serving steps for [intro.js](http://usablica.github.io/intro.js/) based tours.
 ## Get tours
 
 /api/tours (lists all)
+
 /api/tours?screen=xyz (lists all for screen)
+
 /api/tours?screen=xyz&userid=123 (returns and mark as "read" for screen and user)
 
 
